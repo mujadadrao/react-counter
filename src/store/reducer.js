@@ -9,10 +9,20 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 counter: state.counter + 1,
             }
+        case 'DEC_COUNTER':
+            return {
+                ...state,
+                counter: state.counter - 1,
+            }
         case 'ADD_COUNTER':
             return {
                 ...state,
                 counter: state.counter + action.value,
+            }
+        case 'SUB_COUNTER':
+            return {
+                ...state,
+                counter: state.counter - action.value,
             }
         default:
             return state;
