@@ -1,41 +1,32 @@
+import * as actionTypes from '../actions/counter'
+
 const initialState = {
     counter: 0,
-    results: [],
 }
 
-const reducer = (state = initialState, action) => {
+const counter = (state = initialState, action) => {
     switch (action.type) {
-        case 'INCREMENT':
+        case actionTypes.INCREMENT:
             return {
                 ...state,
                 counter: state.counter + 1,
             }
-        case 'DECREMENT':
+        case actionTypes.DECREMENT:
             return {
                 ...state,
                 counter: state.counter - 1,
             }
-        case 'ADD':
+        case actionTypes.ADD:
             return {
                 ...state,
                 counter: state.counter + action.value,
             }
-        case 'SUBTRACT':
+        case actionTypes.SUBTRACT:
             return {
                 ...state,
                 counter: state.counter - action.value,
             }
-        case 'STORE_RESULT':
-            return {
-                ...state,
-                results: [...state.results, action.value],
-            }
-        case 'DELETE_RESULT':
-            return {
-                ...state,
-                results: state.results.filter((item, index) => index !== action.value),
-            }
-        case 'RESET':
+        case actionTypes.RESET:
             return {
                 ...state,
                 counter: 0,
@@ -46,4 +37,4 @@ const reducer = (state = initialState, action) => {
     }
 }
 
-export default reducer;
+export default counter;
