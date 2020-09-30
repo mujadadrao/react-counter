@@ -35,6 +35,7 @@ class Counter extends Component {
                 <CounterControl label="Decrement" clicked={this.props.onDecrementCounter}  />
                 <CounterControl label="Add 5" clicked={this.props.addValueCounter}  />
                 <CounterControl label="Subtract 5" clicked={this.props.subValueCounter}  />
+                <CounterControl label="Reset" clicked={this.props.resetCounter}  />
             </div>
         );
     }
@@ -52,6 +53,7 @@ const mapDispatchToProps = (dispatch) => {
         onDecrementCounter: () => dispatch({type: 'DECREMENT'}),
         addValueCounter: () => dispatch({type: 'ADD', value: 5}),
         subValueCounter: () => dispatch({type: 'SUBTRACT', value: 5}),
+        resetCounter: () => dispatch({type: 'RESET'}),
     }
 }
 
