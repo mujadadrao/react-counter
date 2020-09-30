@@ -5,7 +5,8 @@ import {connect} from 'react-redux';
 
 class Counter extends Component {
     state = {
-        counter: 0
+        counter: 0,
+        results: [],
     }
 
     counterChangedHandler = ( action, value ) => {
@@ -36,6 +37,13 @@ class Counter extends Component {
                 <CounterControl label="Add 5" clicked={this.props.addValueCounter}  />
                 <CounterControl label="Subtract 5" clicked={this.props.subValueCounter}  />
                 <CounterControl label="Reset" clicked={this.props.resetCounter}  />
+                <hr />
+                <button onClick={() => this.props.storeResult(this.props.counterValue)}>Store Result</button>
+                <ul>
+                    {this.props.storedResults.map((result, index) =>
+                        <li key={index} onClick={() => this.props.deleteResult(index)}>{result}</li>)
+                    }
+                </ul>
             </div>
         );
     }
@@ -44,6 +52,7 @@ class Counter extends Component {
 const mapStateToProps = (state) => {
     return {
         counterValue: state.counter,
+        storedResults: state.results,
     }
 }
 
@@ -53,6 +62,8 @@ const mapDispatchToProps = (dispatch) => {
         onDecrementCounter: () => dispatch({type: 'DECREMENT'}),
         addValueCounter: () => dispatch({type: 'ADD', value: 5}),
         subValueCounter: () => dispatch({type: 'SUBTRACT', value: 5}),
+        storeResult: (counterValue) => dispatch({type: 'STORE_RESULT', value: counterValue}),
+        deleteResult: (index) => dispatch({type: 'DELETE_RESULT', value: index}),
         resetCounter: () => dispatch({type: 'RESET'}),
     }
 }

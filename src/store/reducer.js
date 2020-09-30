@@ -1,5 +1,6 @@
 const initialState = {
     counter: 0,
+    results: [],
 }
 
 const reducer = (state = initialState, action) => {
@@ -24,10 +25,21 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 counter: state.counter - action.value,
             }
+        case 'STORE_RESULT':
+            return {
+                ...state,
+                results: [...state.results, action.value],
+            }
+        case 'DELETE_RESULT':
+            return {
+                ...state,
+                results: state.results.filter((item, index) => index !== action.value),
+            }
         case 'RESET':
             return {
                 ...state,
                 counter: 0,
+                results: [],
             }
         default:
             return state;
