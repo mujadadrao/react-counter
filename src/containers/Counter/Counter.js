@@ -36,7 +36,7 @@ const mapStateToProps = (state) => {
     return {
         counterValue: state.counter.counter,
         storedResults: state.results.results,
-    }
+    } 
 }
 
 const mapDispatchToProps = (dispatch) => {

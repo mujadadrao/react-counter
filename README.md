@@ -2,6 +2,8 @@
 
 A simple counting app designed to practice Redux basics
 
+Test it live: <https://react-counter-83807.web.app>
+
 ### Installation
 - Clone or download the repository
 - Navigate to the repository's directory
